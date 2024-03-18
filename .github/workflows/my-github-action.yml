@@ -1,0 +1,10 @@
+name: My Gitub action
+run-name: A demo
+on: [push]
+
+jobs:
+  Demo-Github-Action:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world, github actions!
+      - run: ls /
