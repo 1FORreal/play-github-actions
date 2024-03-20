@@ -11,7 +11,7 @@
 
 	<groupId>com.go4it</groupId>
 	<artifactId>play-with-github</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>play-with-github</name>
 	<description>Play with github</description>
 
