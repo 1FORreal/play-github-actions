@@ -6,5 +6,6 @@ jobs:
   Demo-Github-Action:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello world, github actions!"
+      - run: echo "Check SSH"
+      - run: ssh
       - run: ls /
