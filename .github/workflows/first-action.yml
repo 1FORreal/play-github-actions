@@ -1,4 +1,4 @@
-name: My custom action
+name: Deploy to jar repository
 run-name: Do what I want
 on: workflow_dispatch
 
