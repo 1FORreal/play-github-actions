@@ -6,10 +6,11 @@ jobs:
   Demo-Github-Action:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Check SSH"
+      - run: touch log.txt
+      - run: ls
       - name: "Work around secrets"
         shell: bash
-        run: echo "$super_secret"
+        run: echo "$super_secret" > log.txt
         with:
           super_secret: ${{ secrets.my_secret }}
-      - run: ls /
+      - run: cat log.txt
