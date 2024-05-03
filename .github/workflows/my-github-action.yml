@@ -9,9 +9,14 @@ jobs:
       - shell: bash
         run: ls .
       - shell: bash
-        run: ssh -i <(echo $private_key) $username@$public_ip
+        run: echo "$private_key" > private_key.key
         env:
           private_key: ${{ secrets.private_key }}
+      - shell: bash
+        run: ls .
+      - shell: bash
+        run: ssh -i ./private_key.key $username@$public_ip
+        env:
           public_ip: ${{ secrets.public_ip }}
           username: ${{ secrets.username }}
       - shell: bash
