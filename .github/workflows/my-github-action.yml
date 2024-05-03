@@ -13,6 +13,8 @@ jobs:
         env:
           private_key: ${{ secrets.private_key }}
       - shell: bash
+        run: chmod 755 private_key.key
+      - shell: bash
         run: ls .
       - shell: bash
         run: ssh -i ./private_key.key $username@$public_ip
