@@ -9,15 +9,11 @@ jobs:
       - shell: bash
         run: ls .
       - shell: bash
-        run: ping $public_ip
-        env:
-          public_ip: ${{ secrets.public_ip }}
-      - shell: bash
         run: echo "$private_key" > private_key.key
         env:
           private_key: ${{ secrets.private_key }}
       - shell: bash
-        run: chmod 700 private_key.key
+        run: chmod 600 private_key.key
       - shell: bash
         run: ls .
       - shell: bash
