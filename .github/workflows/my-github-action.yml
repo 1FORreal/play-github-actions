@@ -11,6 +11,6 @@ jobs:
       - name: "Work around secrets"
         shell: bash
         run: echo "$super_secret" > log.txt
-        with:
+        env:
           super_secret: ${{ secrets.my_secret }}
       - run: cat log.txt
