@@ -7,5 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Check SSH"
-      - run: echo "${{ secrets.my_secret }}"
+      - name: "Work around secrets"
+        shell: bash
+        run: echo "$super_secret"
+        with:
+          super_secret: ${{ secrets.my_secret }}
       - run: ls /
