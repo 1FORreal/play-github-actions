@@ -1,16 +1,20 @@
-name: My Gitub action
-run-name: A demo
+name: Connect to remote machine
+run-name: Connect
 on: workflow_dispatch
 
 jobs:
   Demo-Github-Action:
     runs-on: ubuntu-latest
     steps:
-      - run: touch log.txt
-      - run: ls
-      - name: "Work around secrets"
-        shell: bash
-        run: echo "$super_secret" > log.txt
+      - shell: bash
+        run: ls .
+      - shell: bash
+        run: ssh -i < (echo $private_key) $username@$public_ip
         env:
-          super_secret: ${{ secrets.my_secret }}
-      - run: cat log.txt
+          private_key: ${{ secrets.private_key }}
+          public_ip: ${{ secrets.public_ip }}
+          username: ${{ secrets.username }}
+      - shell: bash
+        run: ls .
+      - shell: bash
+        run: "FINISHED"
