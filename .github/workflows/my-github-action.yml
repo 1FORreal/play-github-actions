@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Check SSH"
-      - run: ssh
+      - run: echo ${{ MY_SECRET }}
       - run: ls /
