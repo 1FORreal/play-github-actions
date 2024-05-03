@@ -8,20 +8,13 @@ jobs:
     steps:
       - shell: bash
         run: ls .
-      - shell: bash
-        run: echo "$private_key" > private_key.key
+      - name: "Connect over SSH"
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: "SSH Command"
+        shell: bash
+        run: ssh $username@$public_ip "ls ."
         env:
-          private_key: ${{ secrets.private_key }}
-      - shell: bash
-        run: chmod 600 private_key.key
-      - shell: bash
-        run: ls .
-      - shell: bash
-        run: ssh -i ./private_key.key $username@$public_ip
-        env:
-          public_ip: ${{ secrets.public_ip }}
-          username: ${{ secrets.username }}
-      - shell: bash
-        run: ls .
-      - shell: bash
-        run: "FINISHED"
+          public_ip: ${{ secrets.PUBLIC_IP }}
+          username: ${{ secrets.USERNAME }}
