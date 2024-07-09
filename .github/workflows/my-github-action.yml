@@ -5,16 +5,11 @@ on: workflow_dispatch
 jobs:
   Demo-Github-Action:
     runs-on: ubuntu-latest
+
     steps:
       - shell: bash
         run: ls .
-      - name: "Connect over SSH"
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-      - name: "SSH Command"
+
+      - name: Ping server
         shell: bash
-        run: ssh $username@$public_ip "ls ."
-        env:
-          public_ip: ${{ secrets.PUBLIC_IP }}
-          username: ${{ secrets.USERNAME }}
+        run: ping 129.159.154.25
